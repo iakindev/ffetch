@@ -15,12 +15,12 @@ string execute(const string & mStr) {
 }
 
 int main() {
-  cout << execute("whoami") << "@" << execute("hostname") << endl;
-  cout << "kernel " << execute("uname -r") << endl;
-  cout << "cpu "
+  cout << execute("whoami") << "\033[31m@\033[0m" << execute("hostname") << endl;
+  cout << "\033[31mkernel\033[0m " << execute("uname -r") << endl;
+  cout << "\033[31mcpu\033[0m "
        << execute("lscpu | sed -nr '/Model name/ s/.*:\\s*(.*) @ .*/\\1/p'")
        << endl;
-  cout << "architecture " << execute("uname -m") << endl;
-  cout << "uptime " << execute("uptime -p") << endl;
+  cout << "\033[31marchitecture\033[0m " << execute("uname -m") << endl;
+  cout << "\033[31muptime\033[0m " << execute("uptime -p") << endl;
   return 0;
 }
