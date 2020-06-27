@@ -14,13 +14,17 @@ string execute(const string & mStr) {
   return result;
 }
 
+string printRed(string text, bool space = false) {
+  return "\033[31m" + text + "\033[0m" + (space == true ? " " : "");
+}
+
 int main() {
-  cout << execute("whoami") << "\033[31m@\033[0m" << execute("hostname") << endl;
-  cout << "\033[31mkernel\033[0m " << execute("uname -r") << endl;
-  cout << "\033[31mcpu\033[0m "
+  cout << execute("whoami") << printRed("@") << execute("hostname") << endl;
+  cout << printRed("kernel", true) << execute("uname -r") << endl;
+  cout << printRed("cpu", true)
        << execute("lscpu | sed -nr '/Model name/ s/.*:\\s*(.*) @ .*/\\1/p'")
        << endl;
-  cout << "\033[31marchitecture\033[0m " << execute("uname -m") << endl;
-  cout << "\033[31muptime\033[0m " << execute("uptime -p") << endl;
+  cout << printRed("architecture", true) << execute("uname -m") << endl;
+  cout << printRed("uptime", true) << execute("uptime -p") << endl;
   return 0;
 }
