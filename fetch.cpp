@@ -19,18 +19,21 @@ string printRed(string text, bool space = false) {
 }
 
 int main() {
-  cout << execute("whoami") << printRed("@") << execute("hostname") << endl;
-  cout << printRed("dist", true) << execute("( lsb_release -ds || cat /etc/*release || uname -om ) 2>/dev/null | head -n1 | tr -d '\"'") << endl;
-  cout << printRed("kernel", true) << execute("uname -r") << endl;
-  cout << printRed("cpu", true)
-       << execute("lscpu | sed -nr '/Model name/ s/.*:\\s*(.*) @ .*/\\1/p'")
-       << endl;
-  cout << printRed("architecture", true) << execute("uname -m") << endl;
-  cout << printRed("uptime", true) << execute("uptime -p") << endl;
-  cout << printRed("memory", true) 
-       << execute("free -m  | grep ^Mem | tr -s ' ' | cut -d ' ' -f 3") 
-       << "M/" 
-       << execute("free -m  | grep ^Mem | tr -s ' ' | cut -d ' ' -f 2")
-       << "M" << endl;
+  string username = execute("whoami");
+  string hostname = execute("hostname");
+  string dist = execute("( lsb_release -ds || cat /etc/*release || uname -om ) 2>/dev/null | head -n1 | tr -d '\"'");
+  string kernel = execute("uname -r");
+  string cpu = execute("lscpu | sed -nr '/Model name/ s/.*:\\s*(.*) @ .*/\\1/p'");
+  string arch = execute("uname -m");
+  string uptime = execute("uptime -p");
+  string memory = execute("free -m  | grep ^Mem | tr -s ' ' | cut -d ' ' -f 3") + "M/" + execute("free -m  | grep ^Mem | tr -s ' ' | cut -d ' ' -f 2") + "M";
+
+  cout << username << printRed("@") << hostname << endl;
+  cout << printRed("dist", true) << dist << endl;
+  cout << printRed("kernel", true) << kernel << endl;
+  cout << printRed("cpu", true) << cpu << endl;
+  cout << printRed("architecture", true) << arch << endl;
+  cout << printRed("uptime", true) << uptime << endl;
+  cout << printRed("memory", true) << memory << endl;
   return 0;
 }
