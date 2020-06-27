@@ -26,5 +26,10 @@ int main() {
        << endl;
   cout << printRed("architecture", true) << execute("uname -m") << endl;
   cout << printRed("uptime", true) << execute("uptime -p") << endl;
+  cout << printRed("memory", true) 
+       << execute("free -m  | grep ^Mem | tr -s ' ' | cut -d ' ' -f 3") 
+       << "M/" 
+       << execute("free -m  | grep ^Mem | tr -s ' ' | cut -d ' ' -f 2")
+       << "M" << endl;
   return 0;
 }
