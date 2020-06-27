@@ -20,6 +20,7 @@ string printRed(string text, bool space = false) {
 
 int main() {
   cout << execute("whoami") << printRed("@") << execute("hostname") << endl;
+  cout << printRed("dist", true) << execute("( lsb_release -ds || cat /etc/*release || uname -om ) 2>/dev/null | head -n1 | tr -d '\"'") << endl;
   cout << printRed("kernel", true) << execute("uname -r") << endl;
   cout << printRed("cpu", true)
        << execute("lscpu | sed -nr '/Model name/ s/.*:\\s*(.*) @ .*/\\1/p'")
