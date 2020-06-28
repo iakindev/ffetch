@@ -13,3 +13,11 @@ string get_cpu() {
   }
   return regex_replace(data, regexp, "");
 }
+
+string get_dist() {
+  string data = search("/etc/os-release", "PRETTY_NAME");
+  regex regexpquo("\"");
+  string data_with_quotes_removed = regex_replace(data, regexpquo, "");
+  regex regexp("PRETTY_NAME=");
+  return regex_replace(data_with_quotes_removed, regexp, "");
+}

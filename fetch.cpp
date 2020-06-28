@@ -9,8 +9,7 @@ using namespace std;
 int main() {
   string username = execute("whoami");
   string hostname = execute("hostname");
-  string dist = execute("( lsb_release -ds || cat /etc/*release || uname -om ) "
-                        "2>/dev/null | head -n1 | tr -d '\"'");
+  string dist = get_dist();
   string kernel = execute("uname -r");
   string cpu = get_cpu();
   string arch = execute("uname -m");
