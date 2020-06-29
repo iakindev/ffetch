@@ -10,7 +10,7 @@ int main() {
   string username = execute("whoami");
   string hostname = execute("hostname");
   string dist = get_dist();
-  string kernel = execute("uname -r");
+  string kernel = get_kernel();
   string cpu = get_cpu();
   string arch = execute("uname -m");
   string uptime = execute("uptime -p");

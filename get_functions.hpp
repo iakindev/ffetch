@@ -47,3 +47,15 @@ string get_mem() {
       total_mem + sh_mem - mem_free - buffers - cached - sreclaimable;
   return to_string(used_mem) + "M/" + to_string(total_mem) + "M";
 }
+
+string get_kernel() {
+  string data = search("/proc/version", "Linux");
+  regex regexp(".+?(?=\\()");
+  regex regexp_clean("(Linux version )");
+  smatch m;
+  regex_search(data, m, regexp);
+  string version;
+  for (auto x : m)
+    version = x;
+  return regex_replace(version, regexp_clean, "");
+}

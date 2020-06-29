@@ -8,6 +8,7 @@
         "fstream": "cpp",
         "filesystem": "cpp",
         "*.tcc": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "random": "cpp"
     }
 }
