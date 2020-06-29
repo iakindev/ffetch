@@ -1,6 +1,8 @@
 #pragma once
 #include "utils.hpp"
+#ifdef __x86_64__
 #include <cpuid.h>
+#endif
 #include <iostream>
 #include <regex>
 #include <sys/utsname.h>
