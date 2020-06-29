@@ -48,6 +48,9 @@ string get_mem() {
   return to_string(used_mem) + "M/" + to_string(total_mem) + "M";
 }
 
+// this is not the best way to do this with regex but
+// since c++ regex does not support positive lookbehind
+// we are stuck with this dirty solution,
 string get_kernel() {
   string data = search("/proc/version", "Linux");
   regex regexp(".+?(?=\\()");
