@@ -8,11 +8,11 @@ using namespace std;
 
 int main() {
   string username = execute("whoami");
-  string hostname = execute("hostname");
+  string hostname = get_host();
   string dist = get_dist();
   string kernel = get_kernel();
   string cpu = get_cpu();
-  string arch = execute("uname -m");
+  string arch = get_arch();
   string uptime = execute("uptime -p");
   string memory = get_mem();
 

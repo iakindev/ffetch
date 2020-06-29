@@ -1,6 +1,8 @@
 #pragma once
 #include "utils.hpp"
+#include <iostream>
 #include <regex>
+#include <sys/utsname.h>
 using namespace std;
 
 string get_cpu() {
@@ -48,17 +50,20 @@ string get_mem() {
   return to_string(used_mem) + "M/" + to_string(total_mem) + "M";
 }
 
-// this is not the best way to do this with regex but
-// since c++ regex does not support positive lookbehind
-// we are stuck with this dirty solution,
+string get_host() {
+  struct utsname sys_data;
+  uname(&sys_data);
+  return sys_data.nodename;
+}
+
 string get_kernel() {
-  string data = search("/proc/version", "Linux");
-  regex regexp(".+?(?=\\()");
-  regex regexp_clean("(Linux version )");
-  smatch m;
-  regex_search(data, m, regexp);
-  string version;
-  for (auto x : m)
-    version = x;
-  return regex_replace(version, regexp_clean, "");
+  struct utsname sys_data;
+  uname(&sys_data);
+  return sys_data.release;
+}
+
+string get_arch() {
+  struct utsname sys_data;
+  uname(&sys_data);
+  return sys_data.machine;
 }
