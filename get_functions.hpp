@@ -1,6 +1,7 @@
 #pragma once
 #include "utils.hpp"
-#if defined(__x86_64__) || defined(__amd64__) || defined(_M_AMD64)
+#if defined(__x86_64__) || defined(__amd64__) || defined(_M_AMD64) ||          \
+    defined(__i386__)
 #include <cpuid.h>
 #endif
 #include <iostream>
@@ -9,7 +10,8 @@
 using namespace std;
 
 string get_cpu() {
-#if defined(__x86_64__) || defined(__amd64__) || defined(_M_AMD64)
+#if defined(__x86_64__) || defined(__amd64__) || defined(_M_AMD64) ||          \
+    defined(__i386__)
   char CPUBrandString[0x40];
   unsigned int CPUInfo[4] = {0, 0, 0, 0};
 
