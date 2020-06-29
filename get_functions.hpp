@@ -1,19 +1,32 @@
 #pragma once
 #include "utils.hpp"
+#include <cpuid.h>
 #include <iostream>
 #include <regex>
 #include <sys/utsname.h>
 using namespace std;
 
 string get_cpu() {
-  string data = search("/proc/cpuinfo", "model name");
-  regex regexp("[mM]odel\\sname\\s+:\\s+");
-  // Android fallback
-  if (data == "") {
-    data = search("/proc/cpuinfo", "Hardware");
-    regexp = regex("Hardware\\s+:\\s+");
+  char CPUBrandString[0x40];
+  unsigned int CPUInfo[4] = {0, 0, 0, 0};
+
+  __cpuid(0x80000000, CPUInfo[0], CPUInfo[1], CPUInfo[2], CPUInfo[3]);
+  unsigned int nExIds = CPUInfo[0];
+
+  memset(CPUBrandString, 0, sizeof(CPUBrandString));
+
+  for (unsigned int i = 0x80000000; i <= nExIds; ++i) {
+    __cpuid(i, CPUInfo[0], CPUInfo[1], CPUInfo[2], CPUInfo[3]);
+
+    if (i == 0x80000002)
+      memcpy(CPUBrandString, CPUInfo, sizeof(CPUInfo));
+    else if (i == 0x80000003)
+      memcpy(CPUBrandString + 16, CPUInfo, sizeof(CPUInfo));
+    else if (i == 0x80000004)
+      memcpy(CPUBrandString + 32, CPUInfo, sizeof(CPUInfo));
   }
-  return regex_replace(data, regexp, "");
+  regex eliminate_whitespace("\\s{2,}");
+  return regex_replace(CPUBrandString, eliminate_whitespace, "");
 }
 
 string get_dist() {
