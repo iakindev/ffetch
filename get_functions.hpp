@@ -45,5 +45,5 @@ string get_mem() {
   // Source: https://github.com/KittyKatt/screenFetch/issues/386
   int used_mem =
       total_mem + sh_mem - mem_free - buffers - cached - sreclaimable;
-  return to_string(used_mem) + "/" + to_string(total_mem) + "M";
+  return to_string(used_mem) + "M/" + to_string(total_mem) + "M";
 }
