@@ -1,6 +1,6 @@
 #pragma once
 #include "utils.hpp"
-#ifdef __x86_64__
+#if defined(__x86_64__) || defined(__amd64__) || defined(_M_AMD64)
 #include <cpuid.h>
 #endif
 #include <iostream>
@@ -9,7 +9,7 @@
 using namespace std;
 
 string get_cpu() {
-#ifdef __x86_64__
+#if defined(__x86_64__) || defined(__amd64__) || defined(_M_AMD64)
   char CPUBrandString[0x40];
   unsigned int CPUInfo[4] = {0, 0, 0, 0};
 
@@ -30,7 +30,7 @@ string get_cpu() {
   }
   regex eliminate_whitespace("\\s{2,}");
   return regex_replace(CPUBrandString, eliminate_whitespace, "");
-#elif __arm__
+#elif defined(__aarch64__) || defined(__arm__)
   string data = search("/proc/cpuinfo", "model name");
   regex regexp("[mM]odel\\sname\\s+:\\s+");
   // Android fallback
