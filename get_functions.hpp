@@ -7,6 +7,7 @@
 using namespace std;
 
 string get_cpu() {
+#ifdef __x86_64__
   char CPUBrandString[0x40];
   unsigned int CPUInfo[4] = {0, 0, 0, 0};
 
@@ -27,6 +28,16 @@ string get_cpu() {
   }
   regex eliminate_whitespace("\\s{2,}");
   return regex_replace(CPUBrandString, eliminate_whitespace, "");
+#elif __arm__
+  string data = search("/proc/cpuinfo", "model name");
+  regex regexp("[mM]odel\\sname\\s+:\\s+");
+  // Android fallback
+  if (data == "") {
+    data = search("/proc/cpuinfo", "Hardware");
+    regexp = regex("Hardware\\s+:\\s+");
+  }
+  return regex_replace(data, regexp, "");
+#endif
 }
 
 string get_dist() {
