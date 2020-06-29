@@ -3,6 +3,9 @@
 #include <iostream>
 using namespace std;
 
+// maybe make this accept an array instead of a string
+// so it can return values more efficiently if there is
+// a case that needs to get multiple values from a single file
 string search(string file_path, string search_for) {
   string line;
   bool found = false;

@@ -14,9 +14,7 @@ int main() {
   string cpu = get_cpu();
   string arch = execute("uname -m");
   string uptime = execute("uptime -p");
-  string memory =
-      execute("free -m  | grep ^Mem | tr -s ' ' | cut -d ' ' -f 3") + "M/" +
-      execute("free -m  | grep ^Mem | tr -s ' ' | cut -d ' ' -f 2") + "M";
+  string memory = get_mem();
 
   cout << username << printRed("@") << hostname << endl;
   cout << setw(16) << left << printRed("dist", true) << dist << endl;
