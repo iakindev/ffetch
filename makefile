@@ -1,8 +1,8 @@
 CC = g++
   CFLAGS  = -g -Wall
-  TARGET = fetch
+  TARGET = ffetch
 
-  $(TARGET): $(TARGET).cpp
+  $(TARGET): $(TARGET).cpp get_functions.hpp utils.hpp 
 	$(CC) $(CFLAGS) -o $(TARGET) $(TARGET).cpp
 	
   clean:
