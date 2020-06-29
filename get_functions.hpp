@@ -65,17 +65,17 @@ string get_mem() {
   string sreclaimable_raw = search("/proc/meminfo", "SReclaimable:");
 
   regex regexp("(\\D+)");
-  int total_mem = stoi(regex_replace(total_mem_raw, regexp, "")) / 1024;
-  int sh_mem = stoi(regex_replace(sh_mem_raw, regexp, "")) / 1024;
-  int mem_free = stoi(regex_replace(mem_free_raw, regexp, "")) / 1024;
-  int buffers = stoi(regex_replace(buffers_raw, regexp, "")) / 1024;
-  int cached = stoi(regex_replace(cached_raw, regexp, "")) / 1024;
-  int sreclaimable = stoi(regex_replace(sreclaimable_raw, regexp, "")) / 1024;
+  int total_mem = stoi(regex_replace(total_mem_raw, regexp, ""));
+  int sh_mem = stoi(regex_replace(sh_mem_raw, regexp, ""));
+  int mem_free = stoi(regex_replace(mem_free_raw, regexp, ""));
+  int buffers = stoi(regex_replace(buffers_raw, regexp, ""));
+  int cached = stoi(regex_replace(cached_raw, regexp, ""));
+  int sreclaimable = stoi(regex_replace(sreclaimable_raw, regexp, ""));
 
   // Source: https://github.com/KittyKatt/screenFetch/issues/386
   int used_mem =
       total_mem + sh_mem - mem_free - buffers - cached - sreclaimable;
-  return to_string(used_mem) + "M/" + to_string(total_mem) + "M";
+  return to_string(used_mem / 1024) + "M/" + to_string(total_mem / 1024) + "M";
 }
 
 string get_host() {
