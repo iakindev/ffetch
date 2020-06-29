@@ -6,6 +6,8 @@
         "iosfwd": "cpp",
         "algorithm": "cpp",
         "fstream": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "*.tcc": "cpp",
+        "regex": "cpp"
     }
 }
