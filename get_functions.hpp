@@ -107,8 +107,14 @@ string get_uptime() {
   const long day = hour * 24;
   struct sysinfo si;
   sysinfo(&si);
-  return to_string(si.uptime / day) + " days, " +
-         to_string((si.uptime % day) / hour) + " hours, " +
+  return (si.uptime / day > 1
+              ? to_string(si.uptime / day) +
+                    (si.uptime / day == 1 ? " day, " : " days, ")
+              : "") +
+         ((si.uptime % day) / hour > 1
+              ? to_string((si.uptime % day) / hour) +
+                    ((si.uptime % day) / hour == 1 ? " hour, " : " hours, ")
+              : "") +
          to_string((si.uptime % hour) / minute) + " minutes ";
 }
 
