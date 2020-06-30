@@ -6,6 +6,7 @@
 #endif
 #include <iostream>
 #include <regex>
+#include <sys/sysinfo.h>
 #include <sys/utsname.h>
 using namespace std;
 
@@ -94,4 +95,15 @@ string get_arch() {
   struct utsname sys_data;
   uname(&sys_data);
   return sys_data.machine;
+}
+
+string get_uptime() {
+  const long minute = 60;
+  const long hour = minute * 60;
+  const long day = hour * 24;
+  struct sysinfo si;
+  sysinfo(&si);
+  return to_string(si.uptime / day) + " days, " +
+         to_string((si.uptime % day) / hour) + " hours, " +
+         to_string(si.uptime % minute) + " minutes ";
 }

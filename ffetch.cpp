@@ -13,7 +13,7 @@ int main() {
   string kernel = get_kernel();
   string cpu = get_cpu();
   string arch = get_arch();
-  string uptime = execute("uptime -p");
+  string uptime = get_uptime();
   string memory = get_mem();
 
   cout << username << printRed("@") << hostname << endl;
@@ -23,5 +23,6 @@ int main() {
   cout << setw(16) << left << printRed("arch", true) << arch << endl;
   cout << setw(16) << left << printRed("uptime", true) << uptime << endl;
   cout << setw(16) << left << printRed("memory", true) << memory << endl;
+  get_uptime();
   return 0;
 }
