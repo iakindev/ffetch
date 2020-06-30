@@ -9,6 +9,10 @@
         "filesystem": "cpp",
         "*.tcc": "cpp",
         "regex": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "tuple": "cpp",
+        "ostream": "cpp",
+        "initializer_list": "cpp",
+        "valarray": "cpp"
     }
 }

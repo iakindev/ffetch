@@ -1,6 +1,5 @@
 #include "get_functions.hpp"
 #include "utils.hpp"
-
 #include <iomanip>
 #include <iostream>
 #include <regex>
@@ -23,6 +22,5 @@ int main() {
   cout << setw(16) << left << printRed("arch", true) << arch << endl;
   cout << setw(16) << left << printRed("uptime", true) << uptime << endl;
   cout << setw(16) << left << printRed("memory", true) << memory << endl;
-  get_uptime();
   return 0;
 }

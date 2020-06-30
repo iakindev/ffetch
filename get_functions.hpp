@@ -8,6 +8,7 @@
 #include <regex>
 #include <sys/sysinfo.h>
 #include <sys/utsname.h>
+
 using namespace std;
 
 string get_cpu() {
@@ -58,12 +59,21 @@ string get_dist() {
 
 // Not so efficient
 string get_mem() {
-  string total_mem_raw = search("/proc/meminfo", "MemTotal:");
-  string sh_mem_raw = search("/proc/meminfo", "Shmem:");
-  string mem_free_raw = search("/proc/meminfo", "MemFree:");
-  string buffers_raw = search("/proc/meminfo", "Buffers:");
-  string cached_raw = search("/proc/meminfo", "Cached:");
-  string sreclaimable_raw = search("/proc/meminfo", "SReclaimable:");
+  string arr[6] = {"MemTotal:", "Shmem:",  "MemFree:",
+                   "Buffers:",  "Cached:", "SReclaimable:"};
+
+  string *results = search_from_arr("/proc/meminfo", arr);
+
+  for (int i = 0; i < 6; i++) {
+    cout << results[i] << endl;
+  }
+
+  string total_mem_raw = results[0];
+  string sh_mem_raw = results[1];
+  string mem_free_raw = results[2];
+  string buffers_raw = results[3];
+  string cached_raw = results[4];
+  string sreclaimable_raw = results[5];
 
   regex regexp("(\\D+)");
   int total_mem = stoi(regex_replace(total_mem_raw, regexp, ""));
@@ -106,4 +116,10 @@ string get_uptime() {
   return to_string(si.uptime / day) + " days, " +
          to_string((si.uptime % day) / hour) + " hours, " +
          to_string(si.uptime % minute) + " minutes ";
+}
+
+void array_test(string arr[6]) {
+  for (int i = 0; i < 6; i++) {
+    cout << arr[i] << endl;
+  }
 }

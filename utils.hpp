@@ -3,9 +3,32 @@
 #include <iostream>
 using namespace std;
 
-// maybe make this accept an array instead of a string
-// so it can return values more efficiently if there is
-// a case that needs to get multiple values from a single file
+auto search_from_arr(string file_path, string search_for[6]) {
+  static string results[6];
+  string line;
+  bool found = false;
+  ifstream file;
+  file.open(file_path);
+  if (file.is_open()) {
+    unsigned int line_num = 0;
+    // execute while there is a line to read and not found.
+    while (getline(file, line) && !found) {
+      line_num++;
+      for (int i = 0; i < 6; i++) {
+        if (line.find(search_for[i], 0) != string::npos) {
+          // dirty workaround for Cached:
+          // it redefines it because SwapCached: contains
+          // cached too.
+          if (line.find("SwapCached:", 0) == string::npos)
+            results[i] = line;
+        }
+      }
+    }
+    file.close();
+  }
+  return results;
+}
+
 string search(string file_path, string search_for) {
   string line;
   bool found = false;
