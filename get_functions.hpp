@@ -4,7 +4,6 @@
     defined(__i386__)
 #include <cpuid.h>
 #endif
-#include <iostream>
 #include <regex>
 #include <sys/sysinfo.h>
 #include <sys/utsname.h>
@@ -63,11 +62,6 @@ string get_mem() {
                    "Buffers:",  "Cached:", "SReclaimable:"};
 
   string *results = search_from_arr("/proc/meminfo", arr);
-
-  for (int i = 0; i < 6; i++) {
-    cout << results[i] << endl;
-  }
-
   string total_mem_raw = results[0];
   string sh_mem_raw = results[1];
   string mem_free_raw = results[2];
