@@ -109,7 +109,7 @@ string get_uptime() {
   sysinfo(&si);
   return to_string(si.uptime / day) + " days, " +
          to_string((si.uptime % day) / hour) + " hours, " +
-         to_string(si.uptime % minute) + " minutes ";
+         to_string((si.uptime % hour) / minute) + " minutes ";
 }
 
 void array_test(string arr[6]) {
