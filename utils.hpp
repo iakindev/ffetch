@@ -73,3 +73,11 @@ string execute(const string &mStr) {
 string printRed(string text, bool space = false) {
   return "\033[31m" + text + "\033[0m" + (space == true ? " " : "");
 }
+
+string return_spaces(int count) {
+  string spaces;
+  for (int i = 0; i < count; i++) {
+    spaces += " ";
+  }
+  return spaces;
+}
