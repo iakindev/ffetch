@@ -118,8 +118,16 @@ string get_uptime() {
          to_string((si.uptime % hour) / minute) + " minutes ";
 }
 
-void array_test(string arr[6]) {
-  for (int i = 0; i < 6; i++) {
-    cout << arr[i] << endl;
+constexpr unsigned int str2int(const char *str, int h = 0) {
+  return !str[h] ? 5381 : (str2int(str, h + 1) * 33) ^ str[h];
+}
+
+string get_ascii_art(string _dist) {
+  switch (str2int(_dist)) {
+  case "Arch Linux":
+    return arch_linux;
+
+  default:
+    break;
   }
 }
