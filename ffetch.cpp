@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-  string username = execute("whoami");
+  string username = get_username();
   string hostname = get_host();
   string dist = get_dist();
   string kernel = get_kernel();
@@ -31,6 +31,5 @@ int main() {
                  : return_spaces(arch_linux[0].size() + 1))
          << content_arr[i] << endl;
   }
-
   return 0;
 }

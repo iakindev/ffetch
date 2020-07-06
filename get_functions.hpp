@@ -7,6 +7,7 @@
 #include <regex>
 #include <sys/sysinfo.h>
 #include <sys/utsname.h>
+#include <unistd.h>
 
 using namespace std;
 
@@ -118,3 +119,4 @@ string get_uptime() {
          to_string((si.uptime % hour) / minute) + " minutes ";
 }
 
+string get_username() { return getlogin(); }
