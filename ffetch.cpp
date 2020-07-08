@@ -29,10 +29,8 @@ int main() {
   // figure out whic os's art will be used here
   vector<string> ascii_art = arch_linux;
   for (int i = 0; i < count_to; i++) {
-    cout << (ascii_art[i].size() == ascii_art[0].size()
-                 ? ascii_art[i] + " "
-                 : return_spaces(ascii_art[0].size() + 1))
-         << content_arr[i] << endl;
+    cout << ascii_art[i] + " " << content_arr[i] << endl;
   }
+  cout << ascii_art[8] << endl;
   return 0;
 }
