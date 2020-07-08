@@ -2,6 +2,7 @@
 #include "get_functions.hpp"
 #include "utils.hpp"
 #include <iostream>
+#include <vector>
 using namespace std;
 
 int main() {
@@ -23,12 +24,14 @@ int main() {
 
   // Initial ascii code, VERY unclean,
   // needs to be rewrited in more sane way
-  for (int i = 0; i < (content_size > arch_linux.size() ? content_size
-                                                        : arch_linux.size());
-       i++) {
-    cout << (arch_linux[i].size() == arch_linux[0].size()
-                 ? arch_linux[i] + " "
-                 : return_spaces(arch_linux[0].size() + 1))
+  int count_to =
+      content_size > arch_linux.size() ? content_size : arch_linux.size();
+  // figure out whic os's art will be used here
+  vector<string> ascii_art = arch_linux;
+  for (int i = 0; i < count_to; i++) {
+    cout << (ascii_art[i].size() == ascii_art[0].size()
+                 ? ascii_art[i] + " "
+                 : return_spaces(ascii_art[0].size() + 1))
          << content_arr[i] << endl;
   }
   return 0;
