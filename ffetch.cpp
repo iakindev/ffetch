@@ -26,7 +26,7 @@ int main() {
   // needs to be rewrited in more sane way
   int count_to =
       content_size > arch_linux.size() ? content_size : arch_linux.size();
-  // figure out whic os's art will be used here
+  // figure out which os' art will be used here
   vector<string> ascii_art = arch_linux;
   for (int i = 0; i < count_to; i++) {
     cout << ascii_art[i] + " " << content_arr[i] << endl;
