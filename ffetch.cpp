@@ -31,6 +31,5 @@ int main() {
   for (int i = 0; i < count_to; i++) {
     cout << ascii_art[i] + " " << content_arr[i] << endl;
   }
-  cout << ascii_art[8] << endl;
   return 0;
 }
