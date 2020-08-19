@@ -28,6 +28,9 @@ int main() {
   case str2int("Arch Linux"):
     ascii_art = arch_linux;
     break;
+  case str2int("Debian"):
+    ascii_art = debian;
+    break;
   default:
     ascii_art = {};
     break;
@@ -37,9 +40,12 @@ int main() {
     if (i < ascii_art.size()) {
       cout << ascii_art[i] + " " << content_arr[i] << endl;
     } else {
+      if (i == ascii_art.size())
+        // Every index in ascii_art.hpp is same lenght with
+        // other index values that index belongs to
+        cout << return_spaces(ascii_art[0].size() + 1);
       cout << content_arr[i] << endl;
     }
   }
-
   return 0;
 }
