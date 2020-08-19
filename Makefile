@@ -1,5 +1,5 @@
 CC = g++
-  CFLAGS  = -g -Wall
+  CFLAGS  = -g -Wall -O3
   TARGET = ffetch
 
   $(TARGET): $(TARGET).cpp get_functions.hpp utils.hpp ascii_art.hpp 
