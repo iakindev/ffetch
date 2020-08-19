@@ -6,4 +6,4 @@ It is not bloated as some other fetchers and it's fast.
 
 - Clone this repo
 - `make` to compile
-- `./ffetch` to execute ``No make install yet since program is not fully ready``
+- `./ffetch` to execute

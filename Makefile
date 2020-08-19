@@ -7,3 +7,6 @@ CC = g++
 	
   clean:
 	$(RM) $(TARGET)
+
+  install: $(TARGET)
+	install $(TARGET) /usr/bin/
