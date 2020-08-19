@@ -6,4 +6,5 @@ It is not bloated as some other fetchers and it's fast.
 
 - Clone this repo
 - `make` to compile
-- `./ffetch` to execute
+- `make install` to install
+- `ffetch` to execute
