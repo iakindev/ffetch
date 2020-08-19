@@ -22,14 +22,24 @@ int main() {
       printRed("memory", true) + memory};
   unsigned int content_size = sizeof(content_arr) / sizeof(content_arr[0]);
 
-  // Initial ascii code, VERY unclean,
-  // needs to be rewrited in more sane way
-  int count_to =
-      content_size > arch_linux.size() ? content_size : arch_linux.size();
-  // figure out which os' art will be used here
-  vector<string> ascii_art = arch_linux;
-  for (int i = 0; i < count_to; i++) {
-    cout << ascii_art[i] + " " << content_arr[i] << endl;
+  vector<string> ascii_art;
+
+  switch (str2int(dist.c_str())) {
+  case str2int("Arch Linux"):
+    ascii_art = arch_linux;
+    break;
+  default:
+    ascii_art = {};
+    break;
   }
+
+  for (unsigned int i = 0; i < content_size; i++) {
+    if (i < ascii_art.size()) {
+      cout << ascii_art[i] + " " << content_arr[i] << endl;
+    } else {
+      cout << content_arr[i] << endl;
+    }
+  }
+
   return 0;
 }
