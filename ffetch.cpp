@@ -31,6 +31,12 @@ int main() {
   case str2int("Debian"):
     ascii_art = debian;
     break;
+  case str2int("Gentoo"):
+    ascii_art = gentoo;
+    break;
+  case str2int("Android"):
+    ascii_art = android;
+    break;
   default:
     ascii_art = {};
     break;
@@ -40,7 +46,7 @@ int main() {
     if (i < ascii_art.size()) {
       cout << ascii_art[i] + " " << content_arr[i] << endl;
     } else {
-      if (i == ascii_art.size())
+      if (ascii_art.size() > 0 && i == ascii_art.size())
         // Every index in ascii_art.hpp is same lenght with
         // other index values that index belongs to
         cout << return_spaces(ascii_art[0].size() + 1);
