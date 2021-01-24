@@ -11,7 +11,7 @@
 
 using namespace std;
 
-string get_cpu() {
+inline string get_cpu() {
 #if defined(__x86_64__) || defined(__amd64__) || defined(_M_AMD64) ||          \
     defined(__i386__)
   char CPUBrandString[0x40];
@@ -46,7 +46,7 @@ string get_cpu() {
 #endif
 }
 
-string get_dist() {
+inline string get_dist() {
   string data = search("/etc/os-release", "PRETTY_NAME");
   regex regexpquo("\"");
   data = regex_replace(data, regexpquo, "");
@@ -58,7 +58,7 @@ string get_dist() {
 }
 
 // Not so efficient
-string get_mem() {
+inline string get_mem() {
   string arr[6] = {"MemTotal:", "Shmem:",  "MemFree:",
                    "Buffers:",  "Cached:", "SReclaimable:"};
 
@@ -84,25 +84,25 @@ string get_mem() {
   return to_string(used_mem / 1024) + "M/" + to_string(total_mem / 1024) + "M";
 }
 
-string get_host() {
+inline string get_host() {
   struct utsname sys_data;
   uname(&sys_data);
   return sys_data.nodename;
 }
 
-string get_kernel() {
+inline string get_kernel() {
   struct utsname sys_data;
   uname(&sys_data);
   return sys_data.release;
 }
 
-string get_arch() {
+inline string get_arch() {
   struct utsname sys_data;
   uname(&sys_data);
   return sys_data.machine;
 }
 
-string get_uptime() {
+inline string get_uptime() {
   const long minute = 60;
   const long hour = minute * 60;
   const long day = hour * 24;
@@ -119,4 +119,4 @@ string get_uptime() {
          to_string((si.uptime % hour) / minute) + " minutes ";
 }
 
-string get_username() { return getlogin(); }
+inline string get_username() { return getlogin(); }

@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-auto search_from_arr(string file_path, string search_for[6]) {
+inline auto search_from_arr(string file_path, string search_for[6]) {
   static string results[6];
   string line;
   bool found = false;
@@ -29,7 +29,7 @@ auto search_from_arr(string file_path, string search_for[6]) {
   return results;
 }
 
-string search(string file_path, string search_for) {
+inline string search(string file_path, string search_for) {
   string line;
   bool found = false;
 
@@ -56,7 +56,7 @@ string search(string file_path, string search_for) {
 }
 
 // TODO: looks a bit ugly, maybe improve or explain.
-string execute(const string &mStr) {
+inline string execute(const string &mStr) {
   string result, file;
   FILE *pipe{popen(mStr.c_str(), "r")};
   char buffer[256];
@@ -70,11 +70,11 @@ string execute(const string &mStr) {
 }
 
 // TODO: change this to a single print function with switch cases with colors.
-string printRed(string text, bool space = false) {
+inline string printRed(string text, bool space = false) {
   return "\033[31m" + text + "\033[0m" + (space == true ? " " : "");
 }
 
-string return_spaces(int count) {
+inline string return_spaces(int count) {
   string spaces;
   for (int i = 0; i < count; i++) {
     spaces += " ";

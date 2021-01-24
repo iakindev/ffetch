@@ -5,7 +5,7 @@ using namespace std;
 
 // clang-format off
 
-vector<string> arch_linux = {
+vector<string> arch_linux = { // NOLINT(misc-definitions-in-headers)
     R"(      /\      )",
     R"(     /  \     )",
     R"(    /\   \    )",
@@ -14,7 +14,7 @@ vector<string> arch_linux = {
     R"( /   |  |  -\ )",
     R"(/_-''    ''-_\)"};
 
-vector<string> debian = {
+vector<string> debian = { // NOLINT(misc-definitions-in-headers)
     R"(  _____  )",
     R"( /  __ \ )",
     R"(|  /    |)",
@@ -22,7 +22,7 @@ vector<string> debian = {
     R"(-_       )",
     R"(  --_    )"};
 
-vector<string> gentoo = {
+vector<string> gentoo = { // NOLINT(misc-definitions-in-headers)
     R"( _-----_    )",
     R"((       \   )",
     R"(\     0   \ )",
@@ -31,7 +31,7 @@ vector<string> gentoo = {
     R"((     _-    )",
     R"(\____-      )"};
 
-vector<string> android = {
+vector<string> android = { // NOLINT(misc-definitions-in-headers)
     R"(  ;,           ,;  )",
     R"(   ';,.-----.,;'   )",
     R"(  ,'           ',  )",
