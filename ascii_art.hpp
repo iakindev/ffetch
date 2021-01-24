@@ -3,6 +3,8 @@
 #include <vector>
 using namespace std;
 
+// clang-format off
+
 vector<string> arch_linux = {
     R"(      /\      )",
     R"(     /  \     )",
@@ -36,3 +38,5 @@ vector<string> android = {
     R"( /    O     O    \ )",
     R"(|                 |)",
     R"('-----------------')"};
+
+// clang-format on
